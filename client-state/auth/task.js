@@ -1,10 +1,21 @@
 const user = document.getElementById('welcome');
 const userID = document.getElementById('user_id');
 const signin = document.querySelector('.signin');
-const visForm = () => {
-    signin.classList.add('signin_active');
-};
-window.onload = visForm;
+// const visForm = () => {
+//     signin.classList.add('signin_active');
+// };
+
+let storageData = localStorage.getItem('id_user');
+
+function checkLocalStorage () {
+    if(storageData !== null) {
+        user.classList.add('welcome_active');
+        signin.classList.remove('signin_active');
+        userID.innerText = localStorage.getItem('id_user');
+    }
+}
+
+document.onload = checkLocalStorage();
 
 const form = document.getElementById('signin__form');
 form.addEventListener('submit',  (e) => {
@@ -24,7 +35,9 @@ form.addEventListener('submit',  (e) => {
                 signin.classList.remove('signin_active');
                 user.classList.add('welcome_active');
                 userID.innerText = request['user_id'];
+                console.log(userID.innerText)
 
+                signin.reset();
             }
         }
     };

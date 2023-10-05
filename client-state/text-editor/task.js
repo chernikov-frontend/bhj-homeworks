@@ -1,7 +1,7 @@
 const editor = document.getElementById('editor');
 const reset = document.getElementById('reset');
 
-editor.addEventListener('change', () => {
+editor.addEventListener('input', () => {
     localStorage.setItem('editor', editor.value);
 });
 
