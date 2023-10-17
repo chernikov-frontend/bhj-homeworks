@@ -15,8 +15,6 @@ function checkLocalStorage () {
     }
 }
 
-document.onload = checkLocalStorage();
-
 const form = document.getElementById('signin__form');
 form.addEventListener('submit',  (e) => {
     let formData = new FormData(form);
@@ -24,7 +22,7 @@ form.addEventListener('submit',  (e) => {
     xhr.open('POST', 'https://students.netoservices.ru/nestjs-backend/auth');
     xhr.responseType = 'json';
     xhr.send(formData);
-    xhr.onreadystatechange = function () {
+    xhr.onload = function () {
         if(xhr.readyState === 4) {
             let request = xhr.response;
 
@@ -37,12 +35,14 @@ form.addEventListener('submit',  (e) => {
                 userID.innerText = request['user_id'];
                 console.log(userID.innerText)
 
-                signin.reset();
+                form.reset();
             }
         }
     };
     e.preventDefault();
 });
 
+document.onload = checkLocalStorage();
+
 let saveUserId = localStorage.getItem('id_user');
-console.log(saveUserId);
+console.log(saveUserId)
