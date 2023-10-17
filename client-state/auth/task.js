@@ -22,8 +22,7 @@ form.addEventListener('submit',  (e) => {
     xhr.open('POST', 'https://students.netoservices.ru/nestjs-backend/auth');
     xhr.responseType = 'json';
     xhr.send(formData);
-    xhr.onload = function () {
-        if(xhr.readyState === 4) {
+    xhr.onload = () => {
             let request = xhr.response;
 
             if (request['success'] != true) {
@@ -36,7 +35,6 @@ form.addEventListener('submit',  (e) => {
                 console.log(userID.innerText)
 
                 form.reset();
-            }
         }
     };
     e.preventDefault();
