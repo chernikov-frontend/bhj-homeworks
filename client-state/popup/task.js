@@ -6,10 +6,10 @@ close.onclick = () => {
     document.cookie = 'modal=true';
 }
 
-const checkCookie = () => {
+function checkCookie() {
     if (document.cookie.indexOf('modal=true') < 0) {
         popup.classList.add('modal_active');
     }
 }
 
-document.onload = checkCookie();
+document.addEventListener('load', checkCookie);

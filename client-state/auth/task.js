@@ -40,7 +40,5 @@ form.addEventListener('submit',  (e) => {
     e.preventDefault();
 });
 
-document.onload = checkLocalStorage();
+document.addEventListener('load', checkLocalStorage);
 
-let saveUserId = localStorage.getItem('id_user');
-console.log(saveUserId)
